@@ -1,0 +1,399 @@
+:root {
+  --orange: #f58220;
+  --orange-dark: #d96a00;
+  --hell: #f5f6f8;
+  --grau: #404040;
+  --grau2: #5d5d5d;
+  --weiss: #ffffff;
+  --gruen: #2e9f4d;
+  --rot: #d63b3b;
+
+  color-scheme: light;
+  font-family: "Maven Pro", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #ececec;
+  color: var(--grau);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #ececec;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  font-family: inherit;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: logoanimation 1.8s ease;
+}
+
+.splash-logo {
+  width: min(80vw, 420px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.25));
+}
+
+.app {
+  width: min(100%, 1100px);
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+}
+
+.app-header {
+  background: linear-gradient(90deg, #3f3f3f, #565656);
+  display: flex;
+  align-items: center;
+  padding: 25px 35px;
+  gap: 30px;
+  color: white;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.header-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.header-title-row h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.company-logo {
+  width: 180px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.25));
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.company-logo.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.meta-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  background: #fafafa;
+}
+
+.field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--grau);
+}
+
+.field-label input,
+.field-label textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid #d8d8d8;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.field-label input:focus,
+.field-label textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+
+.checkbox-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.checklist {
+  list-style: none;
+  padding: 30px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checklist li {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  border-left: 8px solid #d9d9d9;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.25s;
+}
+
+.checklist li.ok {
+  border-left-color: var(--gruen);
+  background: #effaf2;
+}
+
+.checklist li.not-ok {
+  border-left-color: var(--rot);
+  background: #fff2f2;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.text-wrap {
+  flex: 1;
+  word-break: break-word;
+}
+
+.status-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-btn {
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid #d8d8d8;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+  background: white;
+  color: #334155;
+}
+
+.status-btn.ok {
+  background: var(--gruen);
+  color: white;
+  border-color: var(--gruen);
+}
+
+.status-btn.not-ok {
+  background: var(--rot);
+  color: white;
+  border-color: var(--rot);
+}
+
+.status-btn:hover {
+  transform: translateY(-2px);
+}
+
+.status-btn.ok.active {
+  background: var(--gruen);
+  color: white;
+  border-color: var(--gruen);
+}
+
+.status-btn.not-ok.active {
+  background: var(--rot);
+  color: white;
+  border-color: var(--rot);
+}
+
+.signature-section {
+  padding: 30px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.signature-input {
+  min-height: 100px;
+  resize: vertical;
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid #d8d8d8;
+  font-size: 16px;
+}
+
+.release-status {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--grau2);
+}
+
+.action-btn,
+.release-btn {
+  background: var(--orange);
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.action-btn:hover:not(:disabled),
+.release-btn:hover:not(:disabled) {
+  background: var(--orange-dark);
+  transform: translateY(-2px);
+}
+
+.action-btn:disabled,
+.release-btn:disabled {
+  background: #bcbcbc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.photo-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: white;
+}
+
+.problem-note {
+  width: 100%;
+  min-height: 70px;
+  padding: 10px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  resize: vertical;
+  font: inherit;
+}
+
+@keyframes logoanimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 15px;
+  }
+
+  .app {
+    border-radius: 16px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 18px;
+    gap: 18px;
+  }
+
+  .header-title-row {
+    justify-content: center;
+  }
+
+  .header-title-row h1 {
+    font-size: 28px;
+  }
+
+  .company-logo {
+    width: 140px;
+  }
+
+  .meta-fields,
+  .checklist,
+  .signature-section {
+    padding: 20px;
+  }
+
+  .item-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-actions {
+    width: 100%;
+  }
+
+  .status-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .action-btn,
+  .release-btn {
+    width: 100%;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+    display: block;
+  }
+
+  .app {
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+  }
+
+  .splash-screen,
+  .status-actions,
+  .action-btn,
+  .release-btn {
+    display: none !important;
+  }
+
+  .company-logo {
+    opacity: 1;
+    transform: none;
+  }
+}

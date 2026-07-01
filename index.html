@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inaugenscheinnahme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="splash-screen" class="splash-screen" aria-hidden="true">
+      <div class="splash-content">
+        <img class="company-logo splash-logo" src="logo.png" alt="Ortloff Ingenieurbüro" />
+      </div>
+    </div>
+
+    <main class="app">
+      <header class="app-header">
+        <div class="header-brand">
+          <img class="company-logo header-logo" src="logo.png" alt="Ortloff Ingenieurbüro" />
+        </div>
+        <div class="header-title-row">
+          <h1>Checkliste Inaugenscheinnahme gemäß TRBS 3121</h1>
+        </div>
+      </header>
+
+      <section class="meta-fields" aria-label="Allgemeine Angaben">
+        <label class="field-label">
+          <span>Datum</span>
+          <input id="report-date" type="date" />
+        </label>
+        <label class="field-label">
+          <span>Aufzugsanlage / Standort</span>
+          <input id="installation-location" type="text" placeholder="Standort eingeben" />
+        </label>
+      </section>
+
+      <ul id="checklist" class="checklist"></ul>
+
+      <section class="signature-section" aria-label="Freigabe">
+        <label class="field-label">
+          <span>Name des Prüfers</span>
+          <input id="inspector-name" type="text" placeholder="Name des Prüfers" />
+        </label>
+        <label class="field-label">
+          <span>Digitale Unterschrift</span>
+          <textarea id="signature-field" class="signature-input" placeholder="Unterschrift oder Freigabehinweis"></textarea>
+        </label>
+        <label class="field-label checkbox-row">
+          <input id="release-checked" type="checkbox" />
+          <span>Freigabe bestätigen</span>
+        </label>
+        <button id="release-btn" class="action-btn release-btn" type="button">Freigeben</button>
+        <p id="release-status" class="release-status">Freigabe erst verfügbar, wenn alle Punkte bearbeitet sind.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
